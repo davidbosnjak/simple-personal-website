@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+        header {
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        nav {
+            margin-top: 1em;
+        }
+        nav a {
+            text-decoration: none;
+            color: #007acc;
+            font-size: 1.2em;
+            margin: 0 1em;
+            cursor: pointer;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .dropdown {
+            display: none;
+            flex-direction: column;
+            margin-top: 0.5em;
+        }
+        .dropdown h3 {
+            margin: 0.5em 0 0.2em;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .dropdown a {
+            font-size: 1em;
+            margin: 0.2em 0;
+            text-decoration: none;
+            color: #007acc;
+        }
+        .dropdown a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            color: #007acc;
+            font-size: 1.5em;
+        }
+        .project-dropdown {
+            display: none;
+            flex-direction: column;
+            margin-top: 0.5em;
+        }
+        .project-dropdown h4 {
+            margin: 0.3em 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+        .project-dropdown p {
+            margin: 0.2em 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .project-dropdown a {
+            text-decoration: none;
+            color: #007acc;
+            font-size: 1em;
+        }
+        .project-dropdown a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function toggleDropdown(targetId) {
+            const allDropdowns = document.querySelectorAll('.dropdown, .project-dropdown');
+            allDropdowns.forEach(dropdown => {
+                if (dropdown.id === targetId) {
+                    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>My Personal Website</h1>
+    </header>
+    <nav>
+        <a onclick="toggleDropdown('project-dropdown')">Projects</a>
+        <a href="#writings">Writings</a>
+        <a href="resume.pdf" target="_blank">Resume</a>
+        <a onclick="toggleDropdown('course-dropdown')">Coursework</a>
+        <div id="course-dropdown" class="dropdown">
+            <h3>Fall 2024</h3>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/comp-370" target="_blank">COMP 370 - Algorithms and Data Structures</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/comp-273" target="_blank">COMP 273 - Computer Systems</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/math-254" target="_blank">MATH 254 - Honours Linear Algebra 1</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/math-338" target="_blank">MATH 338 - Number Theory</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/math-245" target="_blank">MATH 245 - Honours Algebra 1</a>
+
+            <h3>Winter 2024</h3>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/comp-302" target="_blank">COMP 302 - Programming Languages and Paradigms</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/comp-250" target="_blank">COMP 250 - Introduction to Computer Science</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/comp-206" target="_blank">COMP 206 - Introduction to Software Systems</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/phys-142" target="_blank">PHYS 142 - Electromagnetism</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/math-151" target="_blank">MATH 151 - Calculus 2</a>
+
+            <h3>Fall 2023</h3>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/chem-110" target="_blank">CHEM 110 - General Chemistry 1</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/math-133" target="_blank">MATH 133 - Linear Algebra and Geometry</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/math-150" target="_blank">MATH 150 - Calculus 1</a>
+            <a href="https://www.mcgill.ca/study/2024-2025/courses/phys-131" target="_blank">PHYS 131 - Mechanics and Waves</a>
+        </div>
+        <div id="project-dropdown" class="project-dropdown">
+            <h4>Working Email Client</h4>
+            <p>An accessible email client made in Java with features like text-to-speech, dyslexia-friendly font, enlarged text, and ChatGPT integration for translation and faster email sending.</p>
+            <a href="https://github.com/davidbosnjak/workingEmailClient" target="_blank">View Repository</a>
+
+            <h4>BosLanguage</h4>
+            <p>A programming language with a lexer, parser, and interpreter. Includes a Java-based interactive shell and comprehensive documentation.</p>
+            <a href="https://github.com/davidbosnjak/boslanguagefull" target="_blank">View Repository</a>
+
+            <h4>Breakfast Project</h4>
+            <p>A restaurant management system for organizing menus and managing orders, with the ability to export order information.</p>
+            <a href="https://github.com/davidbosnjak/breakfastProject" target="_blank">View Repository</a>
+
+            <h4>App Store Project</h4>
+            <p>An app store for macOS providing a centralized location for popular applications. Developed in Java.</p>
+            <a href="https://github.com/davidbosnjak/app-store-project" target="_blank">View Repository</a>
+        </div>
+    </nav>
+    <div class="social-icons">
+        <a href="https://github.com/davidbosnjak?tab=repositories" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/david-bosnjak-b4034a248/" target="_blank">LinkedIn</a>
+    </div>
+</body>
+</html>
