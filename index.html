@@ -10,7 +10,6 @@
             background-color: #ffffff;
             margin: 0;
             padding: 0;
-            
             position: relative;
         }
         header {
@@ -27,7 +26,7 @@
         }
         nav {
             position: fixed;
-            top: 120px;
+            top: 120px; /* Adjusted to prevent overlap with the header */
             left: 0;
             right: 0;
             text-align: center;
@@ -43,38 +42,48 @@
         nav a:hover {
             text-decoration: underline;
         }
-        .dropdown, .project-dropdown {
+        .dropdown, .project-dropdown, .about-dropdown {
             display: none;
             flex-direction: column;
             margin-top: 0.5em;
             position: fixed;
-            top: 150px;
+            top: 200px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 900;
             background: white;
-            padding: 10px;
+            padding: 20px;
             border: 1px solid #ddd;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        .dropdown h3, .project-dropdown h4 {
+        .dropdown h3, .project-dropdown h4, .about-dropdown h4 {
             margin: 0.5em 0 0.2em;
             font-size: 1.2em;
             color: #333;
         }
-        .dropdown a, .project-dropdown a {
+        .dropdown a, .project-dropdown a, .about-dropdown ul {
             font-size: 1em;
             margin: 0.2em 0;
             text-decoration: none;
             color: #007acc;
         }
+        .about-dropdown ul {
+            padding-left: 20px;
+        }
+        .about-dropdown li {
+            margin-bottom: 0.5em;
+            list-style: disc;
+            color: #555;
+        }
+        .about-dropdown li:last-child {
+            margin-bottom: 0;
+        }
+        .about-dropdown p {
+            margin-bottom: 1em;
+            color: #555;
+        }
         .dropdown a:hover, .project-dropdown a:hover {
             text-decoration: underline;
-        }
-        .project-dropdown p {
-            margin: 0.2em 0;
-            font-size: 0.9em;
-            color: #555;
         }
         .social-icons {
             position: fixed;
@@ -92,7 +101,7 @@
     </style>
     <script>
         function toggleDropdown(targetId) {
-            const allDropdowns = document.querySelectorAll('.dropdown, .project-dropdown');
+            const allDropdowns = document.querySelectorAll('.dropdown, .project-dropdown, .about-dropdown');
             allDropdowns.forEach(dropdown => {
                 if (dropdown.id === targetId) {
                     dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
@@ -108,11 +117,30 @@
         <h1>David Bosnjak</h1>
     </header>
     <nav>
+        <a onclick="toggleDropdown('about-dropdown')">About Me</a>
         <a onclick="toggleDropdown('project-dropdown')">Projects</a>
         <a onclick="toggleDropdown('writings-dropdown')">Writing</a>
         <a href="resume.pdf" target="_blank">Resume</a>
         <a onclick="toggleDropdown('course-dropdown')">Coursework</a>
     </nav>
+    <div id="about-dropdown" class="about-dropdown">
+        <p>Hi! I'm David, a second-year Computer Science and Mathematics student at McGill University. I have a deep passion for problem-solving and an intense curiosity for understanding how things work at their core. </p>
+        <h4>Technical Interests</h4>
+        <ul>
+            <li>Functional programming</li>
+            <li>Compilers</li>
+            <li>Data Science and machine learning</li>
+            <li>Mathematical cryptography</li>
+            <li>Competitive programming</li>
+        </ul>
+        <h4>Other Interests</h4>
+        <ul>
+            <li>Skiing</li>
+            <li>Chess</li>
+            <li>Basketball</li>
+            <li>Tennis</li>
+        </ul>
+    </div>
     <div id="course-dropdown" class="dropdown">
         <h3>Fall 2024</h3>
         <a href="https://www.mcgill.ca/study/2024-2025/courses/comp-370" target="_blank">COMP 370 - Data Science</a>
